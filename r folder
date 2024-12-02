@@ -1,0 +1,40 @@
+#' Plot Total Home Runs by Year
+#'
+#' This function plots the total number of home runs in Major League Baseball by year.
+#' @param data A data frame with baseball batting data.
+#' @return A ggplot object.
+#' @export
+plot_home_runs_by_year <- function(data) {
+  home_runs_by_year <- data %>%
+    group_by(yearID) %>%
+    summarise(total_home_runs = sum(HR, na.rm = TRUE))
+  
+  ggplot(home_runs_by_year, aes(x = yearID, y = total_home_runs)) +
+    geom_line(color = "blue") +
+    labs(title = "Total Home Runs in MLB by Year",
+         x = "Year",
+         y = "Total Home Runs") +
+    theme_minimal()
+}
+
+
+#' Plot Total Home Runs by MLB Team
+#'
+#' This function plots the total number of home runs by MLB team.
+#' @param data A data frame with baseball teams' data.
+#' @return A ggplot object.
+#' @export
+plot_home_runs_by_team <- function(data) {
+  home_runs_by_team <- data %>%
+    group_by(teamID) %>%
+    summarise(total_home_runs = sum(HR, na.rm = TRUE)) %>%
+    arrange(desc(total_home_runs))
+
+  ggplot(home_runs_by_team, aes(x = reorder(teamID, -total_home_runs), y = total_home_runs)) +
+    geom_bar(stat = "identity", fill = "green") +
+    labs(title = "Total Home Runs by MLB Team",
+         x = "Team",
+         y = "Total Home Runs") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+}
