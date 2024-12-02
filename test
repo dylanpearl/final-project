@@ -1,0 +1,5 @@
+test_that("plot_home_runs_by_year returns a ggplot object", {
+  data("Batting")
+  result <- plot_home_runs_by_year(Batting)
+  expect_s3_class(result, "gg")
+})
