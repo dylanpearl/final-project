@@ -1,0 +1,5 @@
+# Create the folder structure for the R package
+dir.create("baseballAnalysis")
+dir.create("baseballAnalysis/R")
+dir.create("baseballAnalysis/man")
+dir.create("baseballAnalysis/tests")
