@@ -1,0 +1,10 @@
+Package: baseballAnalysis
+Type: Package
+Title: Baseball Analysis Package
+Version: 0.1.0
+Author: Your Name
+Maintainer: Your Email
+Description: A package for analyzing baseball data, including home runs by year and team.
+License: What license it uses (e.g., MIT, GPL-3)
+Imports:
+  Lahman, ggplot2, dplyr
